@@ -1,0 +1,22 @@
+<div class='vh-100'>
+    <%= render "navbar" %>
+    <div class="container-fluid bg-light position-fixed p-3 pb-5 h-100 overflow-auto">
+
+        <div class = 'd-flex'>
+            <h1>Trending</h1>
+            <button class="btn btn-outline-secondary mx-2">
+                <%=link_to "View All", articles_path %>
+            </button>
+        </div>
+        <div class='d-flex flex-wrap justify-content-center vh-90 overflow-auto'>
+            <% @articles.each_with_index do |article, index| %>
+                <div class='d-flex align-content-between row bg-dark-subtle border rounded m-2 col-3 p-2 pb-6 row-3'>
+                    <h3>
+                        <%= link_to "#{article.title}", article %>
+                    <h3>
+                    <h6><%= article.updated_at.strftime("%b %d %a %Y") %></h6>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

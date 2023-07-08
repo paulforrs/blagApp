@@ -1,0 +1,32 @@
+<%= render "navbar" %>
+<div class="container-fluid bg-light position-fixed p-3 pb-5 h-100 overflow-scroll">
+    <p><%= notice %></p>
+
+    <%= link_to "Back", articles_path %>
+
+    <div class="bg-light border-bottom">
+        <div class="jumbotron mx-5">
+            <h1 class='mb-5 '><%= @article.title %></h1>
+            
+
+            <div class='container d-flex mb-2'>
+                <span class="label label-primary"> Last update <%= @article.updated_at.strftime("%b %d, %Y %I:%M:%S %p") %></span>
+                <button class='mx-3'>
+                    <%= link_to "Edit", edit_article_path(@article) %>
+                </button>
+                <%= button_to "Delete", @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="panel panel-default mt-4 ">
+        <div class="panel-body">
+        <p>
+            <%= @article.body %>
+            ...
+        </p>
+        </div>
+        <div class="panel-footer">By <%= @article.author %></div>
+    </div>
+    </div>
+</div>
